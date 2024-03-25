@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>Soroteca</title>
+</head>
+
+<body>
+
+  <section class="containner">
+
+    <!-- <header class="header"> <h1>Cabeçalho</h1> </header>-->
+
+    <main class="main">
+
+      <div class="containnerLogin">
+
+        <div id="illustration"></div>
+
+        <div class="contentLoginForm" id="showHideL">
+
+          <div class="theme-selector">
+
+            <input type="checkbox" id="switch" onchange="onThemeChange()" value="marcou" />
+            <label for="switch" class="switch">Toggle</label>
+          </div>
+
+          <div class="contentLoginTitle">
+
+            <h1>Bem vindos</h1>
+
+          </div>
+
+          <form class="contentLogForm">
+            <input autofocus placeholder="Email" type="email" name="Email" id="inptLoginEmail"/>
+            <input placeholder="Senha" type="password" id="inptLoginPass" />
+            <small>Esqueceu o <a href="">email </a> ou <a href="">a senha?</a></small>
+              <input class="contentLoginBtn" type="submit" value="Continuar" />
+
+          </form>
+
+
+          <div class="contentLoginFormCad">
+
+            <small>
+              <p>Não tem uma conta? <button class="contentCadBtn" onclick="cadHidShow()">Cadastre-se</button></p>
+            </small>
+
+          </div>
+
+        </div>
+
+        <!-- Área do cadastro -->
+
+        <div class="contentCadForm" id="showHideC">
+
+          <div class="themeSelectorCad">
+
+            <input type="checkbox" id="switch" onchange="onThemeChange()" value="marcou" />
+            <label for="switch" class="switch">Toggle</label>
+          </div>
+
+          <div class="contentCadTitle">
+
+            <h1>Cadastre-se</h1>
+
+          </div>
+
+          <form class="contentAddForm">
+            <input placeholder="Nome" type="text" required id="inptCadName"/>
+            <input placeholder="CPF"  type="number" required id="inptCadCpf" />
+            <select name="Papel" id="inptCadPaper" class="paperSelect">
+              <option value="Escolha" selected>Escolha um papel:</option>
+              <option value="1">Administrador</option>
+              <option value="2">Médico</option>
+            </select>
+            <input placeholder="UF" type="text" required id="inptCadUf" />
+            <input placeholder="Conselho profissional." type="text" required id="inptCadConsProf"/>
+            <input placeholder="Email" type="email" required id="inptCadEmail"/>
+            <input placeholder="Senha" type="password" required id="inptCadPass"/>
+            <input class="contentLoginBtn" type="submit" value="Cadastrar" />
+
+          </form>
+
+
+          <div class="contentBackToLogin">
+
+            <button class="contentLogarBtn" onclick="cadHidShow(),changImg()">Logar</button>
+
+          </div>
+
+        </div>
+      </div>
+
+  </section>
+
+  </main>
+
+  <!--<footer class="footer">       
+    
+    <div>
+    <p>Made with 
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f64348" stroke="#f64348" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg> 
+        by <a href="https://github.com/OVinicius1995/" id="devFooter">Vinícius Oliveira</a> &copy; 
+    </p>
+  </div>
+
+</footer> -->
+
+  </section>
+  <script src="./index.js"></script>
+</body>
+
+</html>

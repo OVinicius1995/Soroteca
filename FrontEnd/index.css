@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --coresPadrao: pink;
+  --corModais: #a2f3d3;
+  --coresFundo: lightgray;
+  --TamanhosLogin: 100%;
+  --bg: #fbf9ff;
+  --primary-text: #2a225a;
+  --imgCad: "assets/soroteca-01.png";
+}
+
+.containner{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  width: 100%; 
+  height: 80px;
+  border: 2px solid black;
+  background-color: var(--corModais);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.main{
+  flex: 1 0 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 90%;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--coresPadrao);
+}
+
+.containnerLogin{  
+  display: flex;
+  justify-content: flex-end;
+  width: 550px;
+  height: auto;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+}
+
+#illustration {
+  flex-grow: 1;
+  background-image: url("assets/soroteca-02.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#illustrationCad {
+  flex-grow: 1;
+  background-image: url("assets/soroteca-01.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.contentLoginForm{  
+  align-items: end;
+  flex-direction: column;
+  justify-content: space-around; 
+  width: auto;
+  padding: 10px;
+}
+
+.theme-selector {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.themeSelectorCad{
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+/* Switch */
+input[type="checkbox"] {
+  height: 10px;
+  width: 10px;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 45px;
+  height: 25px;
+  display: block;
+  border-radius: 100px;
+  border: var(--primary-text) thin solid;
+  position: relative;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: var(--primary-text);
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+input:checked + label:after {
+  left: calc(75% - 5px);
+  transition-timing-function: ease-in-out;
+}
+
+label:active:after {
+  width: 20px;
+}
+
+.contentLoginTitle{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-family: "Eagle Lake", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 20px 0;
+  border-top: solid 1px gray;
+}
+
+.contentCadTitle{
+  display: flex;
+  width: 100%;  
+  justify-content: center;
+  font-family: "Eagle Lake", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 20px 0;
+  border-top: solid 1px gray;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px var(--bg);
+  border-bottom: solid 1px var(--bg);
+  padding: 20px 0;
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+}
+
+form > small > a {
+  color: rebeccapurple;
+  cursor: pointer;
+}
+
+input {  
+  margin: 10px 0;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--bg);
+}
+
+.contentLoginFormCad > small > p >a{
+
+}
+
+.contentLoginBtn {
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  width: 100%;
+}
+
+.contentLoginBtn:hover {
+  transform: scale(0.96);
+}
+
+.contentLoginBtn {
+  margin-top: 10px;
+  background-image: linear-gradient(to right, #28237e, #1d9ddf);
+  color: white;
+}
+
+.contentCadBtn {
+  border-radius: 8px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  font-size: smaller;
+  width: 40%;
+  margin-top: 10px;
+  background-image: linear-gradient(to right, #95f2f0, #a9e2af);
+  color: white;
+}
+
+.contentCadBtn:hover {
+  transform: scale(0.96);
+}
+
+/* Área de cadastro */
+
+.contentCadForm{
+  align-items: end;
+  flex-direction: column;
+  justify-content: space-around; 
+  width: auto;
+  padding: 10px;
+  /*position: fixed;*/
+  display : none;
+  /*z-index: 999;*/
+}
+
+.contentBackToLogin{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contentLogarBtn {
+  border-radius: 8px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  width: 100%;
+  margin-top: 10px;
+  background-image: linear-gradient(to right, #95f2f0, #a9e2af);
+  color: white;
+}
+
+.contentLogarBtn:hover {
+  transform: scale(0.96);
+}
+
+.active{
+  display: flex;
+}
+.remove{
+  display: none;
+}
+
+.paperSelect{
+  margin: 10px 0;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--bg);
+}
+
+.footer{
+  width: 100%; 
+  height: 40px;  
+  background-color: var(--coresFundo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

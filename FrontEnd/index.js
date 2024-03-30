@@ -75,7 +75,8 @@ async function hash(message/*: string */) {
 } // -> ArrayBuffer
 
 function in_hex(data/*: ArrayBuffer */) {
-	const octets = new Uint8Array(data);
+  const matrix = Uint8Array
+	const octets = new matrix(data);
 	const hex = [].map.call(octets, octet => octet.toString(16).padStart(2, "0")).join("");
 	return hex;
 } // -> string
@@ -111,7 +112,7 @@ async function cadUser(event){
     const inptEmail   = Superdog(document.getElementById('inptCadEmail').value, key[0]);
     const inptPass    = in_hex(await hash(document.getElementById('inptCadPass').value));
     
-  
+ 
     data.push({
       inptName,
       inptCpf,

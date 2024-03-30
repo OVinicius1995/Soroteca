@@ -12,7 +12,23 @@ const cadUsers = async (req,res) => {
   return res.status(201).json(createdUsers);
 }
 
+const deleteUser = async (req,res) =>{
+  const {id} = req.params;
+
+  await cadUsersModel.deleteUser(id);
+  return res.status(204).json();
+}
+
+const updateUser = async (req,res) =>{
+  const {id} = req.params;
+
+  await cadUsersModel.updateUser(id,req.body);
+  return res.status(204).json();
+}
+
 module.exports = {
   getAll,
-  cadUsers
+  cadUsers,
+  deleteUser,
+  updateUser
 }

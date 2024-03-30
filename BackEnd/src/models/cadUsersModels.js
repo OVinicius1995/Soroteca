@@ -13,7 +13,21 @@ const cadUsers = async (user) => {
   return {insertedId: createdUser.insertId};
 }
 
+const deleteUser = async (id) =>{
+  const [removedUser] = await conn.execute('DELETE FROM cadUsers WHERE ID = ?',[id]);
+  return removedUser;
+}
+
+const updateUser = async (id, user) =>{
+  const {Uname,Ucpf,Upaper,Uuf,UconsPro,Uemail,Upass} = user;
+  const updatequery = 'UPDATE cadUsers SET Uname = ?,Ucpf = ?,Upaper = ?,Uuf = ?,UconsPro = ?,Uemail = ?,Upass = ? WHERE ID = ?';
+  const [updateUser] = await conn.execute(updatequery,[Uname,Ucpf,Upaper,Uuf,UconsPro,Uemail,Upass,id]);
+  return updateUser;
+}
+
 module.exports = {
   getAll,
-  cadUsers
+  cadUsers,
+  deleteUser,
+  updateUser
 }

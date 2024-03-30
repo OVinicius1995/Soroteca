@@ -3,6 +3,7 @@ const cadUser = require('./controllers/cadController');
 const cadUsersMiddleware = require('./middleWares/cadUsesrMiddleware.js');
 const router = express.Router();
 
+router.get('/rules', cadUser.getAll);
 router.get('/cadUsers', cadUser.getAll);
 router.post('/cadUsers',cadUsersMiddleware.validateBody,cadUser.cadUsers);
 router.delete('/cadUsers/:id',cadUser.deleteUser);

@@ -34,8 +34,8 @@
 
           </div>
 
-          <form class="contentLogForm">
-            <input autofocus placeholder="Email" type="email" name="Email" id="inptLoginEmail"/>
+          <form class="contentLogForm" >
+            <input placeholder="Email" type="email" name="Email" autofocus id="inptLoginEmail"/>
             <input placeholder="Senha" type="password" id="inptLoginPass" />
             <small>Esqueceu o <a href="">email </a> ou <a href="">a senha?</a></small>
               <input class="contentLoginBtn" type="submit" value="Continuar" />
@@ -71,14 +71,14 @@
 
           <form class="contentAddForm">
             <input placeholder="Nome" type="text" required id="inptCadName"/>
-            <input placeholder="CPF"  type="number" required id="inptCadCpf" />
+            <input oninput="mascaraCpf(this)" placeholder="CPF"  type="text" required id="inptCadCpf" />
             <select name="Papel" id="inptCadPaper" class="paperSelect">
               <option value="Escolha" selected>Escolha um papel:</option>
               <option value="1">Administrador</option>
               <option value="2">Médico</option>
             </select>
-            <input placeholder="UF" type="text" required id="inptCadUf" />
-            <input placeholder="Conselho profissional." type="text" required id="inptCadConsProf"/>
+            <input placeholder="UF" type="text" required maxlength="2" id="inptCadUf" />
+            <input placeholder="Conselho profissional." maxlength="3" type="text" required id="inptCadConsProf"/>
             <input placeholder="Email" type="email" required id="inptCadEmail"/>
             <input placeholder="Senha" type="password" required id="inptCadPass"/>
             <input class="contentLoginBtn" type="submit" value="Cadastrar" />

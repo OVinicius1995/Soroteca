@@ -170,6 +170,18 @@ form {
   border-bottom: solid 1px gray;
 }
 
+#inptCadName{
+  text-transform: capitalize;
+}
+
+#inptCadUf{
+  text-transform: uppercase;
+}
+
+#inptCadConsProf{
+  text-transform: uppercase;
+}
+
 form > small > a {
   color: rebeccapurple;
   cursor: pointer;
@@ -181,10 +193,6 @@ input {
   padding: 12px;
   border-radius: 8px;
   background-color: var(--bg);
-}
-
-.contentLoginFormCad > small > p >a{
-
 }
 
 .contentLoginBtn {

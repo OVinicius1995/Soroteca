@@ -10,14 +10,15 @@ const getAll = async () => {
 };
 
 const cadUsers = async (user) => {
+
   const {Uname,Ucpf,Upaper,Uuf,UconsPro,Uemail,Upass} = user;
   const query = 'INSERT INTO cadUsers(Uname,Ucpf,Upaper,Uuf,UconsPro,Uemail,Upass) VALUES (?,?,?,?,?,?,?)';
   const [createdUser] = await conn.execute(query,[Uname,Ucpf,Upaper,Uuf,UconsPro,Uemail,Upass]);
-
-                     //clicnpj_soroteca_2024** 
+                    
+  //clicnpj_soroteca_2024** 
   const secretKey = '44d939129da1372c74eb4798ffd930cc';
-                     
-
+  
+  
   const makeTokem = jwt.sign(
     {
       papper: Upaper
@@ -27,12 +28,12 @@ const cadUsers = async (user) => {
       expiresIn: '1y',
     }
   );
+                        
 
   console.log(makeTokem);
 
-  return {insertedId: createdUser.insertId};
+  return {insertedId: createdUser.insertId, token: makeTokem};
 }
-
 
 const deleteUser = async (id) =>{
   const [removedUser] = await conn.execute('DELETE FROM cadUsers WHERE ID = ?',[id]);

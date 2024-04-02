@@ -1,12 +1,12 @@
-FROM node:21-alpine
+FROM node:16-alpine
 
-WORKDIR /soroteca/api
+WORKDIR /Soroteca/BackEnd
 
-COPY package*.json /soroteca/api/
+COPY package*.json /Soroteca/BackEnd/
 
 RUN npm install
 
-COPY . /soroteca/api/
+COPY . /Soroteca/BackEnd/
 
 EXPOSE 8888
 

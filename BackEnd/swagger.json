@@ -1,0 +1,156 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title":"API do projeto Soroteca",
+    "description":"Essa á API que demonstra as rotas do projeto.",
+    "contact":{
+      "name": "Vinícius Oliveira",
+      "url":"https://github.com/OVinicius1995/OVinicius1995",
+      "email":"abreu-vinicius15@hotmail.com"
+    },
+    "version":"1.0.0"
+  },
+    "paths":{      
+      "/cadUsers":{
+        "post":{
+          "tags":["Cadastro de usuários"],
+          "description":"Cadastro de usuários.",
+          "requestBody":{
+            "description":"Dados necessários para cadastrar usuários.",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/RequestUsers"
+                }
+              }
+            }
+          },
+          "responses":{
+            "201":{
+              "description":"Cadastrado com sucesso.",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/ResponseUsers"
+                  }
+                }
+              }
+            },
+            "400":{ 
+              "description":"Todos os campos são obrigatórios e não podem ficar em branco! Verifique."
+            }
+        }
+        },
+        "get":{
+          "tags":["Cadastro de usuários"],
+          "description":"Usários cadastrados.",
+           "responses":{
+            "200":{
+              "content": {
+                "application/json": {                  
+                  "schema":{
+                    "type": "array",
+                    "items":{                      
+                      "$ref":"#/components/schemas/RequestUsers"
+                    },
+                    "400":{
+                      "description":"Os dados não podem ser nulos."
+                    }
+                  }
+                }
+              }
+            }
+           } 
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "RequestUsers": {
+          "type": "object",
+          "properties":{
+            "Uname": {
+              "type":"VARCHAR(80)",
+              "description":"Nome do usuário.",
+              "example": "Super Homem mais aranha"
+            },
+            "Ucpf":{
+              "type": "VARCHAR(80)",
+              "description":"Cpf do usuário.",
+              "example": "111.111.226-57"
+            },
+            "Upaper":{
+              "type":"char(1)",
+              "description": "Informa se o usário é ADM ou CRM.",
+              "enum":["1","2"]
+            },
+            "Uuf":{
+              "type": "char(2)",
+              "description":"Unidade federativa do usuário.",
+              "example": "MG"
+            },
+            "UconsPro":{
+             "type":"char(3)",
+             "description":"Código do conselho do usuário.",
+             "example": "CRM"
+            },
+            "Uemail":{
+              "type":"VARCHAR(80)",
+              "description":"Email do usuário.",
+              "example": "super@aranhasstore.com"
+            },
+            "Upass":{
+              "type":"VARCHAR(80)",
+              "description":"Senha do usuário.",
+              "example": "a1234567"
+              }
+            }
+          },
+          "ResponseUsers":{
+            "type": "object",
+          "properties":{
+            "Uname": {
+              "type":"VARCHAR(80)",
+              "description":"Nome do usuário.",
+              "example": "Super Homem mais aranha"
+            },
+            "Ucpf":{
+              "type": "VARCHAR(80)",
+              "description":"Cpf do usuário.",
+              "example": "111.111.226-57"
+            },
+            "Upaper":{
+              "type":"char(1)",
+              "description": "Informa se o usário é ADM ou CRM.",
+              "enum":["1","2"]
+            },
+            "Uuf":{
+              "type": "char(2)",
+              "description":"Unidade federativa do usuário.",
+              "example": "MG"
+            },
+            "UconsPro":{
+             "type":"char(3)",
+             "description":"Código do conselho do usuário.",
+             "example": "CRM"
+            },
+            "Uemail":{
+              "type":"VARCHAR(80)",
+              "description":"Email do usuário.",
+              "example": "super@aranhasstore.com"
+            },
+            "Upass":{
+              "type":"VARCHAR(80)",
+              "description":"Senha do usuário.",
+              "example": "a1234567"
+              },
+              "JWT":{
+                "type":"JWT",
+                "description":"Token JWT gerado por usuários no momento do login.",
+                "example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vbWVAYWx1cmEuY29tLmJyIiwicGFzc3dvcmQiOiJIdUVLVzQ4OSFqNDQ1KiIsImlhdCI6MTcxMTg0MDQwOCwiZXhwIjoxNzQzMzk4MDA4LCJzdWIiOiIxIn0.WbI7raZE4vaX9Bp6pwXi3syDmhc3JlU3aD4y8zHe6kg"
+              }
+            }
+          }
+        }
+      }
+    }

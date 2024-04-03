@@ -1,9 +1,8 @@
 const cadUsersModel = require('../models/cadUsersModels');
 
-const getAll = async (_req,res) => {
-  
+const getAll = async (req,res) => {
+  const {token} = req.params;
   const users = await cadUsersModel.getAll();
-  
   return res.status(200).json(users);
 };
 
@@ -16,7 +15,7 @@ const deleteUser = async (req,res) =>{
   const {id} = req.params;
 
   await cadUsersModel.deleteUser(id);
-  return res.status(204).json();
+  return res.status(201).json({message:"Deletado com sucesso!"});
 }
 
 const updateUser = async (req,res) =>{

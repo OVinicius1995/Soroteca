@@ -1,3 +1,6 @@
+const conn = require('../models/connection');
+const jwt = require('jsonwebtoken');
+
 const validateBody = (req,res,next) =>{
   const {body} = req;
 
@@ -17,6 +20,39 @@ const validateBody = (req,res,next) =>{
 
 };
 
+const validateExists = async (req,res,next) =>{
+  const {id} = req.params;
+
+
+ const [usersids] = await conn.execute('Select id from cadUsers where id=?',[id]);
+
+  if(usersids.length === 0){
+    
+    return res.status(400).json({message: "Id não encontrado no banco, verifique!"});  
+  }
+
+  next();
+}
+
+const validaAutorization = (req,res,next) => {
+
+  const tokenTeste = req.headers['authorization'];
+
+  if (!tokenTeste) {
+    return res.status(401).json({auth: false, message: 'O token não foi informado, verifique.' });
+  }
+
+  if(tokenTeste != process.env.SECRET) {
+    return res.status(500).json({auth: false, message: 'O token informado não é válido, verifique.' });
+    
+  };
+
+  next();
+
+}
+
 module.exports = {
-  validateBody
+  validateBody,
+  validateExists,
+  validaAutorization
 }

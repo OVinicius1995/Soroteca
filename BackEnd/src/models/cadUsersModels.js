@@ -5,7 +5,9 @@ const getAll = async () => {
   const [users] = await conn.execute('Select * from cadUsers');
   
   const tokenGerado = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vbWVAYWx1cmEuY29tLmJyIiwicGFzc3dvcmQiOiJIdUVLVzQ4OSFqNDQ1KiIsInBhcHBlciI6IjEiLCJpYXQiOjE3MTE5MTIzNzcsImV4cCI6MTc0MzQ2OTk3Nywic3ViIjoiMSJ9.FaL51bRyj5Pl1NaJ8g5fQPqu_QKt_hC5ioOCzjNUisg';
-  console.log(jwt.decode(tokenGerado));
+  //console.log(jwt.decode(tokenGerado));
+
+    
   return users;
 };
 

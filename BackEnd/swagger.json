@@ -43,24 +43,82 @@
         },
         "get":{
           "tags":["Cadastro de usuários"],
-          "description":"Usários cadastrados.",
+          "description":"Usários cadastrados.",    
+          "parameters":[
+            {
+              "in":"header",
+              "name":"X-Authorization-ID",
+              "type":"string",
+              "description":"Token para obter os usuário do banco.",
+              "required": true
+            }
+          ],
            "responses":{
-            "200":{
+            "401":{
               "content": {
                 "application/json": {                  
                   "schema":{
                     "type": "array",
                     "items":{                      
-                      "$ref":"#/components/schemas/RequestUsers"
-                    },
-                    "400":{
-                      "description":"Os dados não podem ser nulos."
+                      "$ref":"#/components/schemas/responsesGet"
                     }
                   }
                 }
               }
             }
            } 
+        }
+      },
+      "/cadUsers/{id}":{
+        "put":{
+          "tags":["Cadastro de usuários"],
+          "description":"Atualiza as informações dos usuários cadastrados.",
+          "requestBody":{
+            "description":"Dados possíveis de atualização no cadastro de usuários.",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/RequestUsers"
+                }
+              }
+            }
+          },
+          "parameters":[
+            {
+              "name": "id",
+              "in":"path",
+              "description":"Id do usuário.",
+              "required":true
+            }
+          ],
+          "responses":{
+            "204":{
+              "description":"Atualizado com sucesso."
+            },
+            "400":{ 
+              "description":"Id não encontrado no banco, verifique!"
+            }
+          }
+        },
+        "delete":{
+          "tags":["Cadastro de usuários"],
+          "description":"Deleta as informações dos usuários cadastrados.",
+          "parameters":[
+            {
+              "name": "id",
+              "in":"path",
+              "description":"Id do usuário.",
+              "required":true
+            }
+          ],
+          "responses":{
+            "201":{
+              "description":"Deletado com sucesso."
+            },
+            "400":{ 
+              "description":"Id não encontrado no banco, verifique!"
+            }
+          }
         }
       }
     },
@@ -150,7 +208,23 @@
                 "example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vbWVAYWx1cmEuY29tLmJyIiwicGFzc3dvcmQiOiJIdUVLVzQ4OSFqNDQ1KiIsImlhdCI6MTcxMTg0MDQwOCwiZXhwIjoxNzQzMzk4MDA4LCJzdWIiOiIxIn0.WbI7raZE4vaX9Bp6pwXi3syDmhc3JlU3aD4y8zHe6kg"
               }
             }
-          }
-        }
+          },
+            "responsesGet":{
+              "description": "Authentication information is missing or invalid",
+              "headers":{
+                "WWW_Authenticate":{
+                  "schema":{
+                    "type": "string"
+                 }
+                }
+              }
+            }
+        },
+        "securitySchemes":{
+          "basicAuth": {
+            "type": "http",
+            "scheme": "basic"
+          } 
+         }
       }
     }

@@ -2,8 +2,32 @@ const LoghideShow     = document.getElementById('showHideL');
 const CadhideShow     = document.getElementById('showHideC');
 const Cadillustration = document.getElementById('illustration');
 const contentCadForm  = document.querySelector('.contentAddForm');
-const contentLogForm  = document.querySelector('.contentLoginForm');
+const contentLogForm  = document.querySelector('.contentLogForm');
 const data = [];
+
+
+const fetchUsers = async () =>{
+  const responseRules = await fetch('http://localhost:8888/rules', {
+    method: 'GET',
+    // headers: {
+    //     'x-tenant': '44d939129da1372c74eb4798ffd930cc' // 
+    // }
+    
+ }); 
+
+  const rules = await responseRules.json();
+  //console.log(rules)
+
+  const key = rules[0].cypherkey;
+  const uay = rules[0].matrix;
+  const tph = rules[0].typeHash;
+
+ return {
+  key,
+  uay,
+  tph
+        }    
+}
 
 
 function cadHidShow(){
@@ -65,8 +89,10 @@ function Superdog(textCript, key) {
 }
 
 async function hash(message/*: string */) {
+  const getRules = await fetchUsers();
+ 
   //Essa informação deverá vir do banco de dados.
-  const getTypeHash = "SHA-512";
+  const getTypeHash = getRules.tph.toString();
 
 	const text_encoder = new TextEncoder;
 	const data = text_encoder.encode(message);
@@ -75,7 +101,8 @@ async function hash(message/*: string */) {
 } // -> ArrayBuffer
 
 function in_hex(data/*: ArrayBuffer */) {
-  const matrix = Uint8Array
+
+  const matrix = Uint8Array;
 	const octets = new matrix(data);
 	const hex = [].map.call(octets, octet => octet.toString(16).padStart(2, "0")).join("");
 	return hex;
@@ -97,10 +124,34 @@ function validCpf(cpf){
   return result;
 }
 
+function loadingShow(){
+ 
+  const divLoading = document.createElement('div');
+     divLoading.classList.add("loading");
+
+  const labelLoading = document.createElement('p');
+     labelLoading.classList.add("loadingText");
+     labelLoading.innerText = "Carregando...";
+
+     document.getElementById('loading').appendChild(divLoading);
+     divLoading.appendChild(labelLoading); 
+          
+}
+
+function loadingHide(){
+  const loadings = document.getElementsByClassName("loading");
+  if (loadings.length){
+    loadings[0].remove();
+  }
+}
+
 async function cadUser(event){
+  loadingShow();
   event.preventDefault();
+  const getRules = await fetchUsers();
+
   //Essa informação deverá vir do banco de dados.
-  const key  = [2];
+  const key  = [parseInt(getRules.key)];
 
   if (validCpf(document.getElementById('inptCadCpf').value)){
     
@@ -111,8 +162,7 @@ async function cadUser(event){
     const inptConsPro = Superdog(document.getElementById('inptCadConsProf').value, key[0]);
     const inptEmail   = Superdog(document.getElementById('inptCadEmail').value, key[0]);
     const inptPass    = in_hex(await hash(document.getElementById('inptCadPass').value));
-    
- 
+
     data.push({
       inptName,
       inptCpf,
@@ -123,8 +173,12 @@ async function cadUser(event){
       inptPass
    });
 
+   console.log(data)
+
         
     alert("Cadastrado.");
+
+    loadingHide();
   
     document.getElementById('inptCadName').value     = "";
     document.getElementById('inptCadCpf').value      = "";
@@ -143,30 +197,51 @@ async function cadUser(event){
     document.getElementById('inptCadCpf').style.backgroundColor = "red";
     document.getElementById('inptCadCpf').focus();
     
-  }
+  } 
   
-  
-  
-
 }
 
+
 async function logIn(event){
-  //Essa informação deverá vir do banco de dados.
-  const key  = [2];
-  
+  loadingShow();
   event.preventDefault();
+  const getRules = await fetchUsers();  
+  const key  = [parseInt(getRules.key)];
+
+  const email = document.getElementById('inptLoginEmail').value;
+  const pass  = document.getElementById('inptLoginPass').value;
+  let find = false;
+
+  if(email === "" || email === undefined){
+    alert("O email não foi informado");
+    loadingHide();
+  } else if (pass === "" || pass === undefined){
+    alert("A senha não foi informada");
+    loadingHide();
+  } else {
+  
   const inptEmailLogin = Superdog(document.getElementById('inptLoginEmail').value, key[0]);
   const inptPassLogin = in_hex(await hash(document.getElementById('inptLoginPass').value));  
-    
+  
+
   data.filter((filterUser, indice) => {
 
     if(filterUser.inptEmail === inptEmailLogin & filterUser.inptPass == inptPassLogin) {
-      alert("Show!");
-    } else{
-      alert("Usuário ou senha inválidos! Verifique");
-    }
+      return find = true;
+    } 
+    stop
+  
+  })
 
-  });
+  if(find){
+    alert("Bem vindo!");
+    loadingHide();
+  } else{
+    alert("Usuário ou senha inválidos,verifique!");
+    loadingHide();
+  }
+
+};
   
 }
 

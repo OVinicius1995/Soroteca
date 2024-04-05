@@ -45,12 +45,14 @@
           "tags":["Cadastro de usuários"],
           "description":"Usários cadastrados.",    
           "parameters":[
-            {
+            { 
+              "description":"Token para obter os usuário do banco.",             
+              "name":"x-tenant",
               "in":"header",
-              "name":"X-Authorization-ID",
-              "type":"string",
-              "description":"Token para obter os usuário do banco.",
-              "required": true
+              "required": true,
+              "schema":{
+                "type":"string"
+              }
             }
           ],
            "responses":{
@@ -60,7 +62,7 @@
                   "schema":{
                     "type": "array",
                     "items":{                      
-                      "$ref":"#/components/schemas/responsesGet"
+                      "$ref":"#/components/schemas/RequestUsers"
                     }
                   }
                 }

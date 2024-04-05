@@ -36,7 +36,7 @@ const validateExists = async (req,res,next) =>{
 
 const validaAutorization = (req,res,next) => {
 
-  const tokenTeste = req.headers['authorization'];
+  const tokenTeste = req.headers['x-tenant'];
 
   if (!tokenTeste) {
     return res.status(401).json({auth: false, message: 'O token não foi informado, verifique.' });

@@ -3,10 +3,9 @@ const CadhideShow     = document.getElementById('showHideC');
 const Cadillustration = document.getElementById('illustration');
 const contentCadForm  = document.querySelector('.contentAddForm');
 const contentLogForm  = document.querySelector('.contentLogForm');
-const data = [];
 
 
-const fetchUsers = async () =>{
+const fetchRules = async () =>{
   const responseRules = await fetch('http://localhost:8888/rules', {
     method: 'GET',
     // headers: {
@@ -27,6 +26,25 @@ const fetchUsers = async () =>{
   uay,
   tph
         }    
+}
+
+const fetchUsers = async () =>{
+  const Usersresponse = await fetch('http://localhost:8888/cadUsers/', {
+    method: 'GET',
+    headers: {
+        'x-tenant': '44d939129da1372c74eb4798ffd930cc' // 
+    }    
+
+  });
+      const users = await Usersresponse.json();      
+
+      // const Upass  = users[0].Upass;
+      // const Uemail = users[0].Uemail;
+
+      //console.log(users)
+      // console.log(Upass)
+
+      return users 
 }
 
 
@@ -89,7 +107,7 @@ function Superdog(textCript, key) {
 }
 
 async function hash(message/*: string */) {
-  const getRules = await fetchUsers();
+  const getRules = await fetchRules();
  
   //Essa informação deverá vir do banco de dados.
   const getTypeHash = getRules.tph.toString();
@@ -148,7 +166,8 @@ function loadingHide(){
 async function cadUser(event){
   loadingShow();
   event.preventDefault();
-  const getRules = await fetchUsers();
+  const getRules = await fetchRules();
+  
 
   //Essa informação deverá vir do banco de dados.
   const key  = [parseInt(getRules.key)];
@@ -163,18 +182,21 @@ async function cadUser(event){
     const inptEmail   = Superdog(document.getElementById('inptCadEmail').value, key[0]);
     const inptPass    = in_hex(await hash(document.getElementById('inptCadPass').value));
 
-    data.push({
-      inptName,
-      inptCpf,
-      inptPaper,
-      inptUf,
-      inptConsPro,
-      inptEmail,
-      inptPass
-   });
-
-   console.log(data)
-
+   const dataUsers = {
+    "Uname":  inptName,
+    "Ucpf":   inptCpf,
+    "Upaper": inptPaper,
+    "Uuf":    inptUf,
+    "UconsPro": inptConsPro,
+    "Uemail":   inptEmail,
+    "Upass":    inptPass
+   }
+   
+    await fetch('http://localhost:8888/cadUsers', {
+      method: 'post',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(dataUsers),
+    });
         
     alert("Cadastrado.");
 
@@ -201,11 +223,11 @@ async function cadUser(event){
   
 }
 
-
 async function logIn(event){
   loadingShow();
   event.preventDefault();
-  const getRules = await fetchUsers();  
+  const getRules = await fetchRules(); 
+  
   const key  = [parseInt(getRules.key)];
 
   const email = document.getElementById('inptLoginEmail').value;
@@ -219,14 +241,15 @@ async function logIn(event){
     alert("A senha não foi informada");
     loadingHide();
   } else {
+
+  const getUsers = await fetchUsers();   
   
   const inptEmailLogin = Superdog(document.getElementById('inptLoginEmail').value, key[0]);
   const inptPassLogin = in_hex(await hash(document.getElementById('inptLoginPass').value));  
-  
 
-  data.filter((filterUser, indice) => {
+  getUsers.filter((filterUser, indice) => { 
 
-    if(filterUser.inptEmail === inptEmailLogin & filterUser.inptPass == inptPassLogin) {
+    if(filterUser.Uemail === inptEmailLogin & filterUser.Upass == inptPassLogin) {
       return find = true;
     } 
     stop

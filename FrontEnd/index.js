@@ -197,8 +197,12 @@ async function cadUser(event){
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify(dataUsers),
     });
-        
-    alert("Cadastrado.");
+    
+    Swal.fire({
+      title: "Cadastrado.",
+      text: "Usuário cadastrado com sucesso!",
+      icon: "success"
+    });
 
     loadingHide();
   
@@ -214,13 +218,18 @@ async function cadUser(event){
     document.getElementById('inptCadCpf').style.backgroundColor = "#fbf9ff";
 
   }else{
-    alert('Cpf invalido!, verifique!');
-    document.getElementById('inptCadCpf').value  = "";
-    document.getElementById('inptCadCpf').style.backgroundColor = "red";
-    document.getElementById('inptCadCpf').focus();
-    
+    loadingHide();
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "O cpf informado é inválido, verifique!",
+      html:document.getElementById('inptCadCpf').focus()
+    });        
   } 
-  
+  document.getElementById('inptCadCpf').value  = "";
+  document.getElementById('inptCadCpf').style.backgroundColor = "red";
+  document.getElementById('inptCadCpf').focus();
 }
 
 async function logIn(event){

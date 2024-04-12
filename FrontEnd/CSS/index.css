@@ -185,8 +185,6 @@ label:active:after {
 form {
   display: flex;
   flex-direction: column;
-  border-top: solid 1px var(--bg);
-  border-bottom: solid 1px var(--bg);
   padding: 20px 0;
   border-top: solid 1px gray;
   border-bottom: solid 1px gray;

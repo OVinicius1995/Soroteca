@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/soroteca.CSS">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css">
+  <title>Soroteca</title>
+</head>
+<body>
+
+  <section class="containner">
+
+    <header class="headerContent">
+      <h1>SOROTECA</h1>
+    </header>
+
+    <main class="mainContent">
+      <div class="panelContent">
+        <div class="itensContent" onclick="showCadGAl()"><H1>Cad. de Galerias</H1></div>
+        <div class="itensContent" onclick="showCadRack()"><H1>Cadastro de Racks</H1></div>
+        <div class="itensContent"><H1>Arma. p/ Etiqueta </H1></div>
+        <div class="itensContent"><H1>Consulta de Loc.</H1></div>
+        <div class="itensContent"><H1>Registro de Mov.</H1></div>
+        <div class="itensContent"><H1>Gestão de Loc. e Div.</H1></div>
+        <div class="itensContent"><H1>Alertas de Capa. e tmp de perma.</H1></div>
+        <div class="itensContent"><H1>Consulta Rápida por Pac.</H1></div>
+        <div class="itensContent"><H1>Integração Sistema de Pedidos</H1></div>
+        <div class="itensContent"><H1>Segurança de Dados e Acesso</H1></div>        
+      </div>
+
+      <div class="boardContent">
+        <div class="boardCadGalerias">
+          <div class="contentCadGal" id="showHideGal">
+
+            <div class="themeSelectorCad">
+  
+              <input type="checkbox" id="switch" onchange="onThemeChange()" value="marcou" />
+              <label for="switch" class="switch">Toggle</label>
+            </div>
+  
+            <div class="contentTitleCadGal">
+  
+              <h1>Cadastro de galerias</h1>
+  
+            </div>
+  
+            <form class="contentCadGalForm">
+              <input placeholder="Nome da galeria" type="text"      required id="inptGaleryName"/>
+              <input placeholder="Capacidade Máxima"  type="number" required id="inptGaleryCapacity" />
+              <input placeholder="Temperatura"  type="number"       required id="inptGaleryTemperatura" />
+              <input placeholder="Tipo de amostras"  type="text"    required id="inptGaleryTipoAmostra" />
+              <input class="contentLoginBtn" type="submit" value="Cadastrar" />  
+            </form>
+<!--   
+  
+            <div class="contentBackToLogin">
+  
+              <button class="contentLogarBtn" onclick="cadHidShow(),changImg()">Logar</button>
+  
+            </div> -->
+  
+          </div>
+        </div>
+        <div class="boardCadRacks">
+          <div class="contentCadGaleryForm" id="showHideRac">
+
+            <div class="themeSelectorCad">
+  
+              <input type="checkbox" id="switch" onchange="onThemeChange()" value="marcou" />
+              <label for="switch" class="switch">Toggle</label>
+            </div>
+  
+            <div class="contentTitleCadRacks">
+  
+              <h1>Cadastro de racks</h1>
+  
+            </div>
+  
+            <form class="contentRacksForm">
+              <input placeholder="Nome do rack"      type="text" required id="inptCadNameRack"/>
+              <input placeholder="Quantidade de linhas"  type="number" required id="inptCadNumLinhas" />
+              <input placeholder="Quantidade de colunas" type="number" required id="inptCadNumLinhas" />
+              <select name="A linha inicia com:" id="inptCadInicLinha" class="cmbLinesColumns">
+                <option value="Escolha" selected>Como irá iniciar a linha:</option>
+                <option value="1">Números</option>
+                <option value="2">Letras</option>
+              </select>
+              <select name="A coluna inicia com:" id="inptCadInicColuna" class="cmbLinesColumns">
+                <option value="Escolha" selected>Como irá iniciar a coluna:</option>
+                <option value="1">Números</option>
+                <option value="2">Letras</option>
+              </select>
+              <select name="A qual galeria pertence esse rack:" id="inptRackGalery" class="cmbLinesColumns">
+                <option value="Escolha" selected>Irá para qual galeria:</option>
+              </select>
+              <input class="contentLoginBtn" type="submit" value="Cadastrar" />  
+            </form>  
+<!--   
+            <div class="contentBackToLogin">
+  
+              <button class="contentLogarBtn" onclick="cadHidShow(),changImg()">Logar</button>
+  
+            </div> -->
+  
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footerContent">
+      <div>
+        <p>Made with 
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f64348" stroke="#f64348" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg> 
+            by <a href="https://github.com/OVinicius1995/" id="devFooter" target="_blank">Vinícius Oliveira</a> &copy; 
+        </p>
+      </div>
+    </footer>
+
+  </section>
+  <script src="./JavaScript/soroteca.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js"></script>
+  
+</body>
+</html>

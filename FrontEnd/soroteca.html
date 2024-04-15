@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css">
   <title>Soroteca</title>
 </head>
+
 <body>
 
   <section class="containner">
@@ -19,6 +20,7 @@
       <div class="panelContent">
         <div class="itensContent" onclick="showCadGAl()"><H1>Cad. de Galerias</H1></div>
         <div class="itensContent" onclick="showCadRack()"><H1>Cadastro de Racks</H1></div>
+        <div class="itensContent" onclick="showCadAmostras()"><H1>Cadastro de Amostras </H1></div>
         <div class="itensContent"><H1>Arma. p/ Etiqueta </H1></div>
         <div class="itensContent"><H1>Consulta de Loc.</H1></div>
         <div class="itensContent"><H1>Registro de Mov.</H1></div>
@@ -78,9 +80,9 @@
             </div>
   
             <form class="contentRacksForm">
-              <input placeholder="Nome do rack"      type="text" required id="inptCadNameRack"/>
-              <input placeholder="Quantidade de linhas"  type="number" required id="inptCadNumLinhas" />
-              <input placeholder="Quantidade de colunas" type="number" required id="inptCadNumLinhas" />
+              <input placeholder="Nome do rack"          type="text" required   id="inptCadNameRack"/>
+              <input placeholder="Quantidade de linhas"  type="number" required id="inptCadNumLines" />
+              <input placeholder="Quantidade de colunas" type="number" required id="inptCadNumColuns" />
               <select name="A linha inicia com:" id="inptCadInicLinha" class="cmbLinesColumns">
                 <option value="Escolha" selected>Como irá iniciar a linha:</option>
                 <option value="1">Números</option>
@@ -92,8 +94,7 @@
                 <option value="2">Letras</option>
               </select>
               <select name="A qual galeria pertence esse rack:" id="inptRackGalery" class="cmbLinesColumns">
-                <option value="Escolha" selected>Irá para qual galeria:</option>
-              </select>
+               </select>
               <input class="contentLoginBtn" type="submit" value="Cadastrar" />  
             </form>  
 <!--   
@@ -103,6 +104,54 @@
   
             </div> -->
   
+          </div>
+        </div>
+        <div class="contentCadAmostrasForm">
+          <div class="cadAmostraPanel">
+            
+            <h1>Cadastro de Amostras</h1>
+
+            <form class="contentCadGalForm">
+              <select name="A qual rack pertence esse amostra:" id="inptRackAmostra" class="cmbLinesColumns">
+                <option value="Escolha" selected>Irá para qual rack:</option>
+              </select>
+              <input placeholder="Código da asmotra"  type="number" required id="inptRackCod" />
+              
+              <input class="contentLoginBtn" type="submit" value="Cadastrar Amostra" />  
+            </form>
+          </div>
+          
+          <div class="cadAmostraGrid"><H1>Hello world</H1>
+          
+            <h2>A basic HTML table</h2>
+
+            <table class="gridAmostras">
+              <tr>
+                <th></th>
+                <th>Coluna 1</th>
+                <th>Coluna 2</th>
+                <th>Coluna 3</th>
+              </tr>
+              <tr>
+                <td>Linha 1</td> 
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+              </tr>
+              <tr>
+                <td>Linha 2</td> 
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+              </tr>
+              <tr>
+                <td>Linha 3</td> 
+                <td>Bla Bla Bla</td>
+                <td>Teste</td>
+                <td>Teste</td>
+              </tr>
+            </table>
+            </table>
           </div>
         </div>
       </div>

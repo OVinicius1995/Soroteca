@@ -57,8 +57,6 @@ function showCadRack(){
 
 function showCadAmostras(){  
 
-  
-
   wichRack.innerText="";
   makeFirstOption = document.createElement('option');
 
@@ -98,6 +96,87 @@ function showCadAmostras(){
       });   
   });
   }
+}
+
+function getDadosRackOnchange(){
+
+  alert(wichRack.value)
+
+  datasRacks.filter((dadosRack,index) => {
+
+    if(wichRack.value === dadosRack.rackName){
+      alert("Encontrou");
+      let rackColuns = dadosRack.rackNumberColuns;
+      let rackLines  = dadosRack.rackNumberLines;
+      let rackName =  dadosRack.rackName;
+      
+      console.log({
+        rackColuns,
+        rackLines,
+        rackName
+      }); 
+      stop;
+      let testePreenche = document.getElementById('teste');
+      let testePreenche1 = document.getElementById('teste1');
+      let testePreenche2 = document.getElementById('teste2');
+      let getGrid    = document.getElementById('gridAmostras');
+      let getBody    = document.querySelector('tbody');
+
+      
+
+      for (let i = 0; i < rackColuns; i++) {
+        let makeColumn = document.createElement('th');
+        getGrid.appendChild(makeColumn);
+        makeColumn.setAttribute("id",i);
+        makeColumn.innerText="Column " + parseFloat(i) * 1;
+        
+      }
+
+    //   <tr>
+    //   <td>Linha 1</td> 
+    //   <td>Alfreds Futterkiste</td>
+    //   <td>Maria Anders</td>
+    //   <td>Germany</td>
+    // </tr>
+
+      for (let i = 0; i < rackLines; i++) {
+        let makeLines = document.createElement('tr');
+        let makeTd    = document.createElement('td');
+        let getLinha    = document.querySelector('tr');
+        // 
+
+        // getGrid.appendChild(makeLines);
+        getBody.appendChild(makeLines); 
+        makeLines.appendChild(makeTd);
+        makeLines.setAttribute("id","tr"+i);
+        makeTd.innerText="Linha " + i;
+        // makeLines.appendChild(makeTd);       
+        // makeTd.setAttribute("id","linha"+i);
+        // makeTd.innerText="Teste" + i;        
+      }
+
+      alert(rackLines * rackColuns)
+
+      for (let i = 0; i < rackLines; i++) {
+
+        let getTr      = document.getElementById("tr"+i);
+        let makeCels   = document.createElement('td');
+        let makeCels2   = document.createElement('td');
+        let makeCels3   = document.createElement('td');
+        let makeCels4   = document.createElement('td');
+
+        getTr.appendChild(makeCels); 
+        getTr.appendChild(makeCels2); 
+        getTr.appendChild(makeCels3); 
+        getTr.appendChild(makeCels4); 
+        makeCels.innerText="Conteudo linha" + 1 + "col" + i;       
+      }
+
+      // testePreenche.innerText  = rackName;
+      // testePreenche1.innerText = rackColuns;
+      // testePreenche2.innerText = rackLines;
+    }
+});
 }
 
 function cadGalery(event){

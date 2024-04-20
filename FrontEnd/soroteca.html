@@ -112,7 +112,8 @@
             <h1>Cadastro de Amostras</h1>
 
             <form class="contentCadGalForm">
-              <select name="A qual rack pertence esse amostra:" id="inptRackAmostra" class="cmbLinesColumns" onchange="getDadosRackOnchange()">
+              <!-- onchange="getDadosRackOnchange()" -->
+              <select name="A qual rack pertence esse amostra:" id="inptRackAmostra" class="cmbLinesColumns">
                 <option value="Escolha" selected>Irá para qual rack:</option>
               </select>
               <input placeholder="Código da asmotra"  type="number" required id="inptRackCod" />
@@ -125,26 +126,31 @@
           
             <h2>A basic HTML table</h2>
 
-            <table class="gridAmostras">
+            <table id="myTable">
+              <tbody>
+              </tbody>
+            </table>
+            <input type="button" onclick="addLinha()" value="add linha"/>
+
+            <!-- <table class="gridAmostras" id="mytable">
               <tr id="gridAmostras">
                 <th></th>              
               </tr>
-
               <tbody>
                 
-                              <!-- <tr id="gridAmostrasLines">
+                            <tr id="gridAmostrasLines">
                                 <td>Linha 1</td> 
                                 <td>Alfreds Futterkiste</td>
                                 <td>Maria Anders</td>
                                 <td>Germany</td>
-                              </tr> -->
-                              <!-- <tr>
+                              </tr> 
+                              <tr>
                                 <td>Linha 2</td> 
                                 <td>Centro comercial Moctezuma</td>
                                 <td>Francisco Chang</td>
                                 <td>Mexico</td>
-                              </tr> -->
-                            <!--   <tr>
+                              </tr> 
+                             <tr>
                                 <td>Linha 3</td> 
                                 <td>Bla Bla Bla</td>
                                 <td>Teste</td>
@@ -155,10 +161,9 @@
                                 <td id="teste"></td>
                                 <td id="teste1"></td>
                                 <td id="teste2"></td>
-                              </tr> -->
-
+                              </tr> 
               </tbody>
-            </table>
+            </table> -->
           </div>
         </div>
       </div>

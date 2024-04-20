@@ -212,6 +212,32 @@ function addLinha() {
   var tbody = document.querySelector("tbody");
   var thInic = document.createElement("th");
   tbody.appendChild(thInic);
+
+  var limpaConteudo = document.getElementById('myTable');
+  var valores = limpaConteudo.rows.length;
+
+  if (valores != 0){
+    alert(valores)
+    alert("re")
+    limpaConteudo.removeChild(limpaConteudo.firstElementChild);
+    let recriaTbody = document.createElement("tbody");
+    var thInic = document.createElement("th");
+
+    limpaConteudo.appendChild(recriaTbody);    
+    recriaTbody.appendChild(thInic);
+
+    makeGrid();
+
+  } else{
+  
+    makeGrid();
+
+  }
+}
+
+function makeGrid(){
+  var tbody = document.querySelector("tbody");
+  
   for(var c = 0; c < 5; c++) {
     var th     = document.createElement("th");
     tbody.appendChild(th);
@@ -226,24 +252,11 @@ function addLinha() {
     trLinas.setAttribute("id","l"+c);
   }
 
-  for(var c = 0; c < 5; c++) {
-    // var trLinhas = document.createElement("tr");
-    // var tdLinhas = document.createElement("td");
-    // var td = document.createElement("td");
-    // var rowLinhas  = table.insertRow(0);
-    // // var cell0  = row.insertCell(0);
-    
-    // // tbody.appendChild(trLinhas);
-    // // trLinhas.appendChild(tdLinhas);
-    // // cell0.appendChild(td);
-    // rowLinhas.innerText="Linhas";
-    
+  for(var c = 0; c < 5; c++) {   
     var table = document.getElementById('l'+c);
 
         //recupera a quantidade atual de linhas da tabela, para inserir a nova linha na proxima posição disponivel
         var proximaLinha = 0
-        // var row     = table.insertRow(proximaLinha);
-        // var rowInic = table.insertRow(proximaLinha);
         
         //Como serão 5 células, um for para criar cada uma das células e os textareas
         for(var d = 1; d < 6; d++) {
@@ -265,6 +278,7 @@ function addLinha() {
           // cell0.appendChild(cels);
         }     
   }
+
 }
 
 function myFunction(x,y) {

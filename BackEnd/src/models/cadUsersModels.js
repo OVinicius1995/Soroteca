@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 const getAll = async () => {
   const [users] = await conn.execute('Select * from cadUsers');
   
-  const tokenGerado = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vbWVAYWx1cmEuY29tLmJyIiwicGFzc3dvcmQiOiJIdUVLVzQ4OSFqNDQ1KiIsInBhcHBlciI6IjEiLCJpYXQiOjE3MTE5MTIzNzcsImV4cCI6MTc0MzQ2OTk3Nywic3ViIjoiMSJ9.FaL51bRyj5Pl1NaJ8g5fQPqu_QKt_hC5ioOCzjNUisg';
-  //console.log(jwt.decode(tokenGerado));
+  const tokenGerado = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXBwZXIiOiIxIiwiaWF0IjoxNzEzOTA0MjQzLCJleHAiOjE3NDU0NjE4NDN9.zSpmRh_kpytVQurHCqIUvAKtMaWMO_8P8QcsVQFuCss';
+  console.log(jwt.decode(tokenGerado));
 
     
   return users;

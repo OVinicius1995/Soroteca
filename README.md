@@ -7,4 +7,11 @@
 
 <hr>
 
-<h1>Em desenvolvimento</h1>
+<div align="center"><h2>Este projeto já está sendo desenvolvido utilizando Docker</h2></div>
+<p>Por tanto para executar a aplicação basta baixar o projeto em sua máquina > acessar a pasta BackEnd > acessar o arquivo .Env > inserir o seu IP em MYSQL_HOST para que o banco MySql fique acessível para a aplicação, feito isso basta estar com o Docker instalado e 
+rodar o comando docker-compose up para que o projeto fique online.</p>
+<p>A aplicação também já consta com criptgrafia de dados, e os dados estão sendo salvos no banco através de API também desenvolvida para o projeto, abaixo estarei anexando a documento (a principio inicial para o projeot):</p>
+
+<hr>
+
+<div align="center"><h2>Breve visão da documentação Swagger do projeto.</h2><img src="https://raw.githubusercontent.com/OVinicius1995/Soroteca/main/FrontEnd/assets/TelasWeb2.gif"></div>

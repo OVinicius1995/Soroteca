@@ -14,4 +14,4 @@ rodar o comando docker-compose up para que o projeto fique online.</p>
 
 <hr>
 
-<div align="center"><h2>Breve visão da documentação Swagger do projeto.</h2><img src="https://raw.githubusercontent.com/OVinicius1995/Soroteca/main/FrontEnd/assets/TelasWeb2.gif"></div>
+<div align="center"><h2>Breve visão da documentação Swagger do projeto.</h2><img src="https://github.com/OVinicius1995/Soroteca/blob/86385c3ce5a30a540799d3bb3b7a220995e18df3/FrontEnd/assets/Swagger.gif"></div>
